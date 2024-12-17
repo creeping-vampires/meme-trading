@@ -9,7 +9,8 @@ export interface Coin {
 
 export interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant?: "primary" | "secondary";
   onClick?: () => void;
   icon?: React.ReactNode;
+  disabled: boolean;
 }

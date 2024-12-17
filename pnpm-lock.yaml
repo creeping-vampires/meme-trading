@@ -11,6 +11,12 @@ dependencies:
   '@dynamic-labs/solana':
     specifier: ^3.9.2
     version: 3.9.2(@dynamic-labs/logger@3.9.2)(eventemitter3@5.0.1)(fastestsmallesttextencoderdecoder@1.0.22)(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+  '@dynamic-labs/solana-core':
+    specifier: ^3.9.2
+    version: 3.9.2(@dynamic-labs/assert-package-version@3.9.2)(@dynamic-labs/rpc-providers@3.9.2)(@dynamic-labs/types@3.9.2)(@dynamic-labs/utils@3.9.2)(@dynamic-labs/wallet-book@3.9.2)(@dynamic-labs/wallet-connector-core@3.9.2)(eventemitter3@5.0.1)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.7.2)
+  '@jup-ag/api':
+    specifier: ^6.0.32
+    version: 6.0.32
   '@solana/wallet-adapter-base':
     specifier: ^0.9.23
     version: 0.9.23(@solana/web3.js@1.98.0)
@@ -2447,6 +2453,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  /@jup-ag/api@6.0.32:
+    resolution: {integrity: sha512-MkNmYhTbf8zmT52xpM/f7pfZJTlAz0G+juFqBJo0iWZ52stl6EBDKTUCphUQkn153pkUqsLzvFW/q5EjarUI5A==}
+    dev: false
 
   /@noble/curves@1.2.0:
     resolution: {integrity: sha512-oYclrNgRaM9SsBUBVbb8M6DTV7ZHRTKugureoYEncY5c65HOmRzvSiTE3y5CYaPYJA/GVkrhXEoF0M3Ya9PMnw==}

@@ -12,6 +12,8 @@
   "dependencies": {
     "@dynamic-labs/sdk-react-core": "^3.9.2",
     "@dynamic-labs/solana": "^3.9.2",
+    "@dynamic-labs/solana-core": "^3.9.2",
+    "@jup-ag/api": "^6.0.32",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
     "@solana/web3.js": "^1.91.1",
