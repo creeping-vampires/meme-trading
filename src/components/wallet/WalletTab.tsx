@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Wallet, Mail } from "lucide-react";
+import { Wallet, Mail, FileSignature } from "lucide-react";
 import EmailForm from "./EmailForm";
 import OTPVerification from "./OTPVerification";
 // import SignMessage from "./SignMessage";
@@ -67,7 +67,7 @@ export default function WalletTab() {
         {step === "email" && (
           <>
             <div className="flex items-center space-x-2 mb-6">
-              <Mail className="text-neutral-900" />
+              <Wallet className="text-neutral-900" />
               <h2 className="text-xl font-medium">Create Wallet</h2>
             </div>
             <EmailForm onSubmit={handleEmailSubmit} isLoading={isLoading} />
@@ -76,7 +76,7 @@ export default function WalletTab() {
 
         {step === "otp" && (
           <>
-            <div className="flex items-center space-x-2 mb-6">
+            <div className="flex items-center  space-x-2 mb-6">
               <Wallet className="text-neutral-900" />
               <h2 className="text-xl font-medium">Verify Email</h2>
             </div>
@@ -88,36 +88,15 @@ export default function WalletTab() {
           </>
         )}
 
-        {/* {step === "wallet" && keypair.publicKey && (
-          <>
-            <div className="flex items-center space-x-2 mb-6">
-              <FileSignature className="text-neutral-900" />
-              <h2 className="text-xl font-medium">Your Wallet</h2>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-sm font-medium text-neutral-700 mb-2">
-                Public Key
-              </h3>
-              <p className="text-xs text-neutral-600 break-all font-mono bg-neutral-50 p-3 rounded">
-                {keypair.publicKey.toBase58()}
-              </p>
-            </div>
-            <SignMessage onSign={handleSignMessage} isLoading={isLoading} />
-          </>
-        )} */}
-
         <div>
           {!!user && (
             <>
               <div>Authenticated user </div>
               <div>{primaryWallet?.address}</div>
-
               <button onClick={handleLogOut}>logout</button>
             </>
           )}
         </div>
-
-        <TradePage />
       </div>
     </div>
   );

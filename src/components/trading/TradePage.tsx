@@ -5,6 +5,7 @@ import { getQuote, getSwapObj } from "../../utils/jupiter";
 import { useDynamicContext, useIsLoggedIn } from "@dynamic-labs/sdk-react-core";
 import { ISolana, isSolanaWallet } from "@dynamic-labs/solana-core";
 import { VersionedTransaction } from "@solana/web3.js";
+import FundingOption from "../funding/FundingOption";
 
 // Example tokens - in production, fetch from Jupiter API
 const EXAMPLE_TOKENS: Token[] = [
