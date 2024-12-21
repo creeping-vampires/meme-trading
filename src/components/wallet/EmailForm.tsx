@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Mail } from 'lucide-react';
-import Button from '../ui/Button';
+import React, { useState } from "react";
+import { Mail } from "lucide-react";
+import Button from "../ui/Button";
 
 interface EmailFormProps {
   onSubmit: (email: string) => void;
@@ -8,7 +8,7 @@ interface EmailFormProps {
 }
 
 export default function EmailForm({ onSubmit, isLoading }: EmailFormProps) {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +18,10 @@ export default function EmailForm({ onSubmit, isLoading }: EmailFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-neutral-700">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-neutral-700"
+        >
           Email Address
         </label>
         <div className="mt-1 relative">
@@ -31,11 +34,14 @@ export default function EmailForm({ onSubmit, isLoading }: EmailFormProps) {
             placeholder="Enter your email"
             required
           />
-          <Mail className="absolute right-3 top-2.5 text-neutral-400" size={20} />
+          <Mail
+            className="absolute right-3 top-2.5 text-neutral-400"
+            size={20}
+          />
         </div>
       </div>
       <Button type="submit" disabled={isLoading}>
-        {isLoading ? 'Sending Code...' : 'Get Verification Code'}
+        {isLoading ? "Sending Code..." : "Get Verification Code"}
       </Button>
     </form>
   );
