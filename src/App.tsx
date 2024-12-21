@@ -7,6 +7,7 @@ import { useNavigationStore } from "./stores/navigationStore";
 import TokenList from "./components/home/TokenList";
 import TradePage from "./components/trading/TradePage";
 import PortfolioPage from "./components/layout/PortfolioPage";
+import TokenBuyPage from "./pages/TokenBuyPage";
 
 function App() {
   const { activeTab } = useNavigationStore();
@@ -19,7 +20,8 @@ function App() {
         {activeTab === "home" && <TokenList />}
         {activeTab === "swap" && (
           <div className="max-w-lg mx-auto">
-            <TradePage />
+            {/* <TradePage /> */}
+            <TokenBuyPage />
           </div>
         )}
         {activeTab === "wallet" && <PortfolioPage />}
