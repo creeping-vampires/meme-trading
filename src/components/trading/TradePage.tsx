@@ -36,6 +36,8 @@ export default function TradePage() {
   // const { isSmartWallet, getEOAWallet, getSmartWallet } = useSmartWallets();
 
   console.log("is logged in ", isLoggedIn);
+  console.log("user ", user);
+  console.log("primaryWallet ", primaryWallet);
   const handleSwap = async (state: SwapState) => {
     // if (!jupiter || !state.inputToken || !state.outputToken) return;
 

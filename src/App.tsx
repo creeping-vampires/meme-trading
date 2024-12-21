@@ -6,6 +6,7 @@ import WalletTab from "./components/wallet/WalletTab";
 import { useNavigationStore } from "./stores/navigationStore";
 import TokenList from "./components/home/TokenList";
 import TradePage from "./components/trading/TradePage";
+import PortfolioPage from "./components/layout/PortfolioPage";
 
 function App() {
   const { activeTab } = useNavigationStore();
@@ -21,7 +22,7 @@ function App() {
             <TradePage />
           </div>
         )}
-        {activeTab === "wallet" && <WalletTab />}
+        {activeTab === "wallet" && <PortfolioPage />}
       </main>
 
       <MobileNav />
