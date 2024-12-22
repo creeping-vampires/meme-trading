@@ -9,13 +9,13 @@ export function ActionButtons() {
   ];
 
   return (
-    <div className="flex justify-around py-8 border-b border-gray-100">
+    <div className="flex justify-around py-4 border-b border-gray-800">
       {actions.map(({ icon, label }) => (
         <button key={label} className="flex flex-col items-center">
-          <div className="w-12 h-12 rounded-full bg-purple-500 text-white flex items-center justify-center mb-2">
+          <div className="w-12 h-12 rounded-full bg-lime-300 text-black flex items-center justify-center mb-2">
             {icon}
           </div>
-          <span className="text-sm font-medium text-gray-700">{label}</span>
+          <span className="text-sm font-medium text-gray-50">{label}</span>
         </button>
       ))}
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Mail } from "lucide-react";
-import Button from "../ui/Button";
+import Button from "../layout/Button";
 
 interface EmailFormProps {
   onSubmit: (email: string) => void;

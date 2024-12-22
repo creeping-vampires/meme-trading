@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type Tab = "home" | "swap" | "wallet";
+type Tab = "market" | "tryluck" | "dashboard";
 
 interface NavigationState {
   activeTab: Tab;
@@ -8,6 +8,6 @@ interface NavigationState {
 }
 
 export const useNavigationStore = create<NavigationState>((set) => ({
-  activeTab: "home",
+  activeTab: "market",
   setActiveTab: (tab) => set({ activeTab: tab }),
 }));

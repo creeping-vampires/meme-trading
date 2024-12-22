@@ -3,7 +3,7 @@ import { ArrowDownUp } from "lucide-react";
 import { Token, SwapState } from "../../types/trading";
 import TokenSelect from "./TokenSelect";
 import TokenModal from "./TokenModal";
-import Button from "../ui/Button";
+import Button from "../layout/Button";
 
 interface SwapFormProps {
   tokens: Token[];
