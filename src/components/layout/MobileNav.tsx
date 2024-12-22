@@ -20,7 +20,7 @@ export default function MobileNav() {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-gray-900 md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 md:hidden bg-zinc-900">
       <div className="flex justify-around p-4">
         {tabs.map((tab) => (
           <button
