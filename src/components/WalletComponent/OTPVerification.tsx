@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { KeyRound } from 'lucide-react';
-import Button from '../ui/Button';
+import React, { useState } from "react";
+import { KeyRound } from "lucide-react";
+import Button from "../layout/Button";
 
 interface OTPVerificationProps {
   onVerify: (code: string) => void;
@@ -8,8 +8,12 @@ interface OTPVerificationProps {
   isLoading: boolean;
 }
 
-export default function OTPVerification({ onVerify, onResend, isLoading }: OTPVerificationProps) {
-  const [code, setCode] = useState('');
+export default function OTPVerification({
+  onVerify,
+  onResend,
+  isLoading,
+}: OTPVerificationProps) {
+  const [code, setCode] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,7 +23,10 @@ export default function OTPVerification({ onVerify, onResend, isLoading }: OTPVe
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="otp" className="block text-sm font-medium text-neutral-700">
+        <label
+          htmlFor="otp"
+          className="block text-sm font-medium text-neutral-700"
+        >
           Verification Code
         </label>
         <div className="mt-1 relative">
@@ -33,14 +40,22 @@ export default function OTPVerification({ onVerify, onResend, isLoading }: OTPVe
             maxLength={6}
             required
           />
-          <KeyRound className="absolute right-3 top-2.5 text-neutral-400" size={20} />
+          <KeyRound
+            className="absolute right-3 top-2.5 text-neutral-400"
+            size={20}
+          />
         </div>
       </div>
       <div className="flex gap-4">
         <Button type="submit" disabled={isLoading}>
-          {isLoading ? 'Verifying...' : 'Verify Code'}
+          {isLoading ? "Verifying..." : "Verify Code"}
         </Button>
-        <Button type="button" variant="secondary" onClick={onResend} disabled={isLoading}>
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={onResend}
+          disabled={isLoading}
+        >
           Resend Code
         </Button>
       </div>

@@ -1,12 +1,10 @@
-import React from "react";
-
-import { ActionButtons } from "../portfolio/ActionButtons";
-import { EmptyState } from "../portfolio/EmptyState";
-import PortfolioBalance from "../portfolio/PortfolioBalance";
-import WalletTab from "../wallet/WalletTab";
+import { ActionButtons } from "../components/DashboardComponents/ActionButtons";
+import { EmptyState } from "../components/DashboardComponents//EmptyState";
+import PortfolioBalance from "../components/DashboardComponents//PortfolioBalance";
+import WalletDynamic from "../components/WalletComponent/WalletDynamic";
 import { useDynamicContext, useIsLoggedIn } from "@dynamic-labs/sdk-react-core";
 
-export default function PortfolioPage() {
+export default function DashboardPage() {
   const isLoggedIn = useIsLoggedIn();
 
   const { user, primaryWallet, handleLogOut } = useDynamicContext();
@@ -14,13 +12,13 @@ export default function PortfolioPage() {
   const walletStats = {
     username: "@tahirahmad.in",
     totalBalance: 32435,
-    percentageChange: 14,
+    percentageChange: 124,
     timeframe: "All time" as const,
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {!isLoggedIn && <WalletTab />}
+    <div>
+      {!isLoggedIn && <WalletDynamic />}
       {isLoggedIn && (
         <div>
           <PortfolioBalance stats={walletStats} />
@@ -30,11 +28,13 @@ export default function PortfolioPage() {
           <div>
             {!!user && (
               <>
-                <div>User </div>
-                <div style={{ fontSize: 12 }}>{primaryWallet?.address}</div>
+                <div className="text-gray-300">User </div>
+                <div style={{ fontSize: 12 }} className="text-gray-300">
+                  {primaryWallet?.address}
+                </div>
                 <button
                   onClick={handleLogOut}
-                  className="w-32 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center mt-2"
+                  className="w-32 h-10 rounded-full bg-lime-300 text-black flex items-center justify-center mt-2"
                 >
                   logout
                 </button>

@@ -7,7 +7,7 @@ export const tokens: Token[] = [
     price: 0.000016,
     change: 12.5,
     volume: 125678923,
-    iconUrl: "https://assets.coingecko.com/coins/images/28600/thumb/bonk.jpg",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
   {
     name: "Dogwifhat",
@@ -15,7 +15,7 @@ export const tokens: Token[] = [
     price: 0.45,
     change: -2.8,
     volume: 89234567,
-    iconUrl: "https://assets.coingecko.com/coins/images/28600/thumb/bonk.jpg",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28081.png",
   },
   {
     name: "Book of Memes",
@@ -23,7 +23,7 @@ export const tokens: Token[] = [
     price: 0.032,
     change: 15.7,
     volume: 45678912,
-    iconUrl: "https://assets.coingecko.com/coins/images/28600/thumb/bonk.jpg",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
   {
     name: "Myro",
@@ -31,8 +31,7 @@ export const tokens: Token[] = [
     price: 0.089,
     change: 8.2,
     volume: 34567891,
-    iconUrl:
-      "https://assets.coingecko.com/coins/images/34217/thumb/myro-token.png",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
   {
     name: "Popcat",
@@ -40,7 +39,7 @@ export const tokens: Token[] = [
     price: 0.00234,
     change: -4.5,
     volume: 23456789,
-    iconUrl: "https://assets.coingecko.com/coins/images/35217/thumb/popcat.png",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
   {
     name: "Slerf",
@@ -48,7 +47,7 @@ export const tokens: Token[] = [
     price: 0.00567,
     change: 25.3,
     volume: 19876543,
-    iconUrl: "https://assets.coingecko.com/coins/images/35526/thumb/slerf.jpg",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
   {
     name: "Silly Dragon",
@@ -56,8 +55,7 @@ export const tokens: Token[] = [
     price: 0.00123,
     change: -1.8,
     volume: 15678901,
-    iconUrl:
-      "https://assets.coingecko.com/coins/images/35399/thumb/silly_dragon_logo.png",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
   {
     name: "Solana Monkey",
@@ -65,8 +63,7 @@ export const tokens: Token[] = [
     price: 145.67,
     change: 5.9,
     volume: 12345678,
-    iconUrl:
-      "https://assets.coingecko.com/coins/images/30955/thumb/solana_monkey.png",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
   {
     name: "Meme Kombat",
@@ -74,7 +71,7 @@ export const tokens: Token[] = [
     price: 0.0789,
     change: -3.2,
     volume: 9876543,
-    iconUrl: "https://assets.coingecko.com/coins/images/35177/thumb/mk.png",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
   {
     name: "Samoyedcoin",
@@ -82,7 +79,6 @@ export const tokens: Token[] = [
     price: 0.0234,
     change: 7.8,
     volume: 8765432,
-    iconUrl:
-      "https://assets.coingecko.com/coins/images/15051/thumb/IXeEj3Y.png",
+    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/28782.png",
   },
 ];

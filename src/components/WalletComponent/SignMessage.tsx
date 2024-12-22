@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { FileSignature } from 'lucide-react';
-import Button from '../ui/Button';
+import React, { useState } from "react";
+import { FileSignature } from "lucide-react";
+import Button from "../layout/Button";
 
 interface SignMessageProps {
   onSign: (message: string) => Promise<string>;
@@ -8,8 +8,8 @@ interface SignMessageProps {
 }
 
 export default function SignMessage({ onSign, isLoading }: SignMessageProps) {
-  const [message, setMessage] = useState('');
-  const [signature, setSignature] = useState('');
+  const [message, setMessage] = useState("");
+  const [signature, setSignature] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ export default function SignMessage({ onSign, isLoading }: SignMessageProps) {
       const sig = await onSign(message);
       setSignature(sig);
     } catch (error) {
-      console.error('Error signing message:', error);
+      console.error("Error signing message:", error);
     }
   };
 
@@ -25,7 +25,10 @@ export default function SignMessage({ onSign, isLoading }: SignMessageProps) {
     <div className="space-y-6">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-neutral-700">
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-neutral-700"
+          >
             Message to Sign
           </label>
           <div className="mt-1">
@@ -41,14 +44,18 @@ export default function SignMessage({ onSign, isLoading }: SignMessageProps) {
           </div>
         </div>
         <Button type="submit" disabled={isLoading} icon={<FileSignature />}>
-          {isLoading ? 'Signing...' : 'Sign Message'}
+          {isLoading ? "Signing..." : "Sign Message"}
         </Button>
       </form>
 
       {signature && (
         <div className="bg-neutral-50 p-4 rounded-lg">
-          <h4 className="text-sm font-medium text-neutral-700 mb-2">Signature</h4>
-          <p className="text-xs text-neutral-600 break-all font-mono">{signature}</p>
+          <h4 className="text-sm font-medium text-neutral-700 mb-2">
+            Signature
+          </h4>
+          <p className="text-xs text-neutral-600 break-all font-mono">
+            {signature}
+          </p>
         </div>
       )}
     </div>

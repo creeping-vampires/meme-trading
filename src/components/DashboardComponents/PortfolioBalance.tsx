@@ -8,14 +8,14 @@ interface PortfolioBalanceProps {
 export default function PortfolioBalance({ stats }: PortfolioBalanceProps) {
   return (
     <div className="text-center py-6">
-      <div className="text-gray-600 mb-2">Total in Memeshot</div>
-      <div className="text-4xl font-bold mb-2">
+      <div className="text-gray-400 mb-2">Portfolio Balance</div>
+      <div className="text-4xl font-bold mb-2 text-gray-50">
         ${stats.totalBalance.toFixed(2)}
       </div>
-      <div className="flex items-center justify-center text-gray-500">
+      <div className="flex items-center justify-center text-xs text-lime-400">
         <span
           className={`mr-2 ${
-            stats.percentageChange >= 0 ? "text-green-500" : "text-red-500"
+            stats.percentageChange >= 0 ? "text-lime-400" : "text-red-500"
           }`}
         >
           {stats.percentageChange}%

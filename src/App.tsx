@@ -1,30 +1,21 @@
-import React from "react";
-import Header from "./components/layout/Header";
-import MobileNav from "./components/navigation/MobileNav";
-import SwapForm from "./components/trading/SwapForm";
-import WalletTab from "./components/wallet/WalletTab";
 import { useNavigationStore } from "./stores/navigationStore";
-import TokenList from "./components/home/TokenList";
-import TradePage from "./components/trading/TradePage";
-import PortfolioPage from "./components/layout/PortfolioPage";
-import TokenBuyPage from "./pages/TokenBuyPage";
+import MarketPage from "./pages/MarketPage";
+import TryLuckPage from "./pages/TryLuckPage";
+import DashboardPage from "./pages/DashboardPage";
+import TopBar from "./components/layout/TopBar";
+import MobileNav from "./components/layout/MobileNav";
 
 function App() {
   const { activeTab } = useNavigationStore();
 
   return (
-    <div className="min-h-screen bg-neutral-50">
-      <Header />
+    <div className="min-h-screen bg-black">
+      <TopBar />
 
       <main className="pt-20 px-4 max-w-5xl mx-auto pb-24">
-        {activeTab === "home" && <TokenList />}
-        {activeTab === "swap" && (
-          <div className="max-w-lg mx-auto">
-            {/* <TradePage /> */}
-            <TokenBuyPage />
-          </div>
-        )}
-        {activeTab === "wallet" && <PortfolioPage />}
+        {activeTab === "market" && <MarketPage />}
+        {activeTab === "tryluck" && <TryLuckPage />}
+        {activeTab === "dashboard" && <DashboardPage />}
       </main>
 
       <MobileNav />

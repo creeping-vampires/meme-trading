@@ -12,7 +12,7 @@ import {
 } from "@dynamic-labs/sdk-react-core";
 import TradePage from "../trading/TradePage";
 
-export default function WalletTab() {
+export default function WalletDynamic() {
   const { user, primaryWallet, handleLogOut } = useDynamicContext();
 
   const { connectWithEmail, verifyOneTimePassword } = useConnectWithOtp();
