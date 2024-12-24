@@ -5,4 +5,5 @@ export interface Token {
   change: number;
   volume: number;
   iconUrl: string;
+  marketCap: number;
 }
