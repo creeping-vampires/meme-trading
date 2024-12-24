@@ -1,16 +1,14 @@
 import React, { useState } from "react";
+
 import { Wallet, Mail, FileSignature, ArrowRight } from "lucide-react";
+
 import EmailForm from "./EmailForm";
 import OTPVerification from "./OTPVerification";
-// import SignMessage from "./SignMessage";
-// import { signMessage } from "../../utils/wallet";
-// import { PublicKey } from "@solana/web3.js";
 import {
   useConnectWithOtp,
   useDynamicContext,
   useEmbeddedWallet,
 } from "@dynamic-labs/sdk-react-core";
-import TradePage from "../trading/TradePage";
 
 export default function WalletDynamic() {
   const { user, primaryWallet, handleLogOut } = useDynamicContext();
@@ -19,13 +17,6 @@ export default function WalletDynamic() {
 
   const [step, setStep] = useState<"email" | "otp" | "wallet">("email");
   const [isLoading, setIsLoading] = useState(false);
-  // const [keypair, setKeypair] = useState<{
-  //   publicKey: PublicKey | null;
-  //   secretKey: Uint8Array | null;
-  // }>({
-  //   publicKey: null,
-  //   secretKey: null,
-  // });
 
   const handleEmailSubmit = async (email: string) => {
     setIsLoading(true);
@@ -55,11 +46,6 @@ export default function WalletDynamic() {
     }
   };
   const { createEmbeddedWallet } = useEmbeddedWallet();
-
-  // const handleSignMessage = async (message: string): Promise<string> => {
-  //   // if (!keypair.secretKey) throw new Error("No keypair available");
-  //   return ""  //signMessage(message, keypair.secretKey);
-  // };
 
   return (
     <div className="max-w-md mx-auto">
