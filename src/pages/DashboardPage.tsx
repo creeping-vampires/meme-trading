@@ -18,8 +18,8 @@ export default function DashboardPage() {
 
   return (
     <div>
-      {isLoggedIn && <WalletDynamic />}
-      {!isLoggedIn && (
+      {!isLoggedIn && <WalletDynamic />}
+      {isLoggedIn && (
         <div>
           <PortfolioBalance stats={walletStats} />
           <ActionButtons />

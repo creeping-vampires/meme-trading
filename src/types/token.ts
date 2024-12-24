@@ -3,7 +3,6 @@ export interface Token {
   symbol: string;
   price: number;
   change: number;
-  volume: number;
   iconUrl: string;
   marketCap: number;
 }
