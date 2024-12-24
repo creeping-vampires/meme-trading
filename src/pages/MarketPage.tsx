@@ -26,6 +26,34 @@ const assets = [
     value: 178.45,
     change: 6.12,
   },
+  {
+    name: "Solana",
+    icon: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
+    balance: 0.421,
+    value: 178.45,
+    change: 6.12,
+  },
+  {
+    name: "Solana",
+    icon: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
+    balance: 0.421,
+    value: 178.45,
+    change: 6.12,
+  },
+  {
+    name: "Solana",
+    icon: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
+    balance: 0.421,
+    value: 178.45,
+    change: 6.12,
+  },
+  {
+    name: "Solana",
+    icon: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
+    balance: 0.421,
+    value: 178.45,
+    change: 6.12,
+  },
 ];
 
 export default function MarketPage() {
@@ -40,11 +68,13 @@ export default function MarketPage() {
             <div className="font-bold text-gray-50">Trending</div>
           </div>
 
-          {assets.map((asset, index) => (
-            <div key={index} className="mb-2">
-              <TokenCard {...asset} />
-            </div>
-          ))}
+          <div>
+            {assets.map((asset, index) => (
+              <div key={index} className="mb-2">
+                <TokenCard {...asset} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

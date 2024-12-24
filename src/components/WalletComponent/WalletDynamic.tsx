@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Wallet } from "lucide-react";
+
+import { Wallet, Mail, FileSignature, ArrowRight } from "lucide-react";
+
 import EmailForm from "./EmailForm";
 import OTPVerification from "./OTPVerification";
 import {
@@ -46,40 +48,51 @@ export default function WalletDynamic() {
   const { createEmbeddedWallet } = useEmbeddedWallet();
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-sm border border-neutral-100">
-      <div className="space-y-6">
-        {step === "email" && (
-          <>
-            <div className="flex items-center space-x-2 mb-6">
-              <Wallet className="text-neutral-900" />
-              <h2 className="text-xl font-medium">Create Wallet</h2>
-            </div>
-            <EmailForm onSubmit={handleEmailSubmit} isLoading={isLoading} />
-          </>
-        )}
-
-        {step === "otp" && (
-          <>
-            <div className="flex items-center  space-x-2 mb-6">
-              <Wallet className="text-neutral-900" />
-              <h2 className="text-xl font-medium">Verify Email</h2>
-            </div>
-            <OTPVerification
-              onVerify={handleOTPVerify}
-              onResend={() => handleEmailSubmit("")}
-              isLoading={isLoading}
+    <div className="max-w-md mx-auto">
+      <div className="relative flex flex-col justify-start p-4">
+        <div className="space-y-2 mb-12">
+          <div className="flex justify-center">
+            <img
+              src="https://cdn3d.iconscout.com/3d/premium/thumb/bitcoin-exchange-3d-icon-download-in-png-blend-fbx-gltf-file-formats--logo-to-ethereum-crypto-transfer-trading-currency-pack-finance-icons-8884928.png"
+              alt="Create wallet"
+              className="w-36 h-36"
             />
-          </>
-        )}
+          </div>
 
-        <div>
-          {!!user && (
+          <h1 className="text-2xl font-bold text-white text-center">
+            SignUp/Login
+          </h1>
+          <p className="text-gray-400 text-lg text-center">
+            Start investing today and your future will change for the better.
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          {step === "email" && (
             <>
-              <div>Authenticated user </div>
-              <div>{primaryWallet?.address}</div>
-              <button onClick={handleLogOut}>logout</button>
+              <EmailForm onSubmit={handleEmailSubmit} isLoading={isLoading} />
             </>
           )}
+
+          {step === "otp" && (
+            <>
+              <OTPVerification
+                onVerify={handleOTPVerify}
+                onResend={() => handleEmailSubmit("")}
+                isLoading={isLoading}
+              />
+            </>
+          )}
+
+          <div>
+            {!!user && (
+              <>
+                <div>Authenticated user </div>
+                <div>{primaryWallet?.address}</div>
+                <button onClick={handleLogOut}>logout</button>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

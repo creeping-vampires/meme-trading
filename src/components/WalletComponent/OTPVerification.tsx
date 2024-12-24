@@ -23,12 +23,6 @@ export default function OTPVerification({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label
-          htmlFor="otp"
-          className="block text-sm font-medium text-neutral-700"
-        >
-          Verification Code
-        </label>
         <div className="mt-1 relative">
           <input
             type="text"
@@ -47,17 +41,29 @@ export default function OTPVerification({
         </div>
       </div>
       <div className="flex gap-4">
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? "Verifying..." : "Verify Code"}
-        </Button>
-        <Button
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="w-full bg-lime-300 backdrop-blur-lg text-black py-1 px-6 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-300"
+        >
+          <span className="text-lg font-medium">
+            {isLoading ? "Verifying..." : "Verify Code"}
+          </span>
+        </button>
+      </div>
+      <div>
+        <button
           type="button"
-          variant="secondary"
           onClick={onResend}
           disabled={isLoading}
+          className="w-full  backdrop-blur-lg  text-neutral-100 px-3 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-300"
         >
-          Resend Code
-        </Button>
+          Did not received code?{" "}
+          <span className="text-s font-small pl-1 text-lime-300">
+            {" "}
+            Send again
+          </span>
+        </button>
       </div>
     </form>
   );
