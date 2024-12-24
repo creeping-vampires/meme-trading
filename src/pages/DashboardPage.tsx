@@ -11,15 +11,15 @@ export default function DashboardPage() {
 
   const walletStats = {
     username: "@tahirahmad.in",
-    totalBalance: 32435,
+    totalBalance: 1435,
     percentageChange: 124,
     timeframe: "All time" as const,
   };
 
   return (
     <div>
-      {!isLoggedIn && <WalletDynamic />}
-      {isLoggedIn && (
+      {isLoggedIn && <WalletDynamic />}
+      {!isLoggedIn && (
         <div>
           <PortfolioBalance stats={walletStats} />
           <ActionButtons />

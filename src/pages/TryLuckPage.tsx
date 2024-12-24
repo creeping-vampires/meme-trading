@@ -1,4 +1,4 @@
-import { Flame, ShipWheel, TrendingUp } from "lucide-react";
+import { ShipWheel } from "lucide-react";
 import { SpinnerPage } from "./SpinnerPage";
 
 export default function TryLuckPage() {
