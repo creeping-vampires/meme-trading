@@ -1,25 +1,35 @@
 import { useEffect, useState } from "react";
 import { getTokensListByCategory } from "../actions/serverActions";
+import { Token } from "../types/token";
 
-const useMarketTokensHook = (hookInit = false) => {
-  const [loaded, setLoaded] = useState(0);
-  const [tokensData, setTokensData] = useState(null);
-  const [trendingData, setTrendingData] = useState(null);
-  const [muradData, setMuradData] = useState(null);
+interface TokenCategories {
+  Trending?: Token[];
+  Murad?: Token[];
+  AI?: Token[];
+}
+
+const useMarketTokensHook = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [tokensData, setTokensData] = useState<TokenCategories | null>(null);
 
   useEffect(() => {
-    async function asyncFn() {
-      if (loaded === 0) {
-        setLoaded(loaded + 1);
-
-        let res = await getTokensListByCategory();
-        setTrendingData(res.Trending);
-        setMuradData(res.Murad);
-        setTokensData(res);
+    const fetchTokens = async () => {
+      try {
+        const response = await getTokensListByCategory();
+        setTokensData(response);
+      } catch (err) {
+        setError("Failed to fetch tokens");
+        console.error("Error fetching tokens:", err);
+      } finally {
+        setLoading(false);
       }
-    }
-    asyncFn();
-  }, [loaded]);
+    };
+
+    fetchTokens();
+  }, []);
+
+  return { tokensData, loading, error };
 };
 
 export default useMarketTokensHook;
