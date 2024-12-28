@@ -2,6 +2,8 @@ import { Flame, TrendingUp } from "lucide-react";
 import MarketHeader from "../components/MarketComponents/MarketHeader";
 import TokenCard from "../components/MarketComponents/TokenCard";
 import { BackgroundEffect } from "../components/layout/BackgroundEffect";
+import { useEffect, useMemo, useState } from "react";
+import { getTokensListByCategory } from "../actions/serverActions";
 
 const assets = [
   {
