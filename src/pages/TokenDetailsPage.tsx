@@ -17,8 +17,16 @@ export default function TokenDetailsPage() {
     return null;
   }
 
-  const { name, symbol, price, change, iconUrl } = selectedToken;
-  const isPositive = change >= 0;
+  const {
+    symbol,
+    name,
+    iconUrl,
+    tokenAddress,
+    priceInUsd,
+    priceChange,
+    marketCap,
+  } = selectedToken;
+  const isPositive = priceChange >= 0;
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -56,7 +64,7 @@ export default function TokenDetailsPage() {
 
         {/* Token Price */}
         <div className="mb-6">
-          <div className="text-4xl font-bold mb-2">${price.toFixed(6)}</div>
+          <div className="text-4xl font-bold mb-2">${priceInUsd}</div>
           <div
             className={`flex items-center ${
               isPositive ? "text-green-500" : "text-red-500"
@@ -69,7 +77,7 @@ export default function TokenDetailsPage() {
             )}
             <span>
               {isPositive ? "+" : ""}
-              {change}%
+              {priceChange}%
             </span>
             <span className="text-gray-500 ml-2">Past 24h</span>
           </div>

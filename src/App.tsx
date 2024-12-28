@@ -9,9 +9,13 @@ import TopBar from "./components/layout/TopBar";
 import MobileNav from "./components/layout/MobileNav";
 import { useEffect } from "react";
 import { Telegram } from "./telegram";
+import { useInitializeTokens } from "./hooks/useInitializeTokens";
 
 export default function App() {
   const { activeTab } = useNavigationStore();
+
+  // Initialize tokens on app mount
+  useInitializeTokens();
 
   useEffect(() => {
     if (Telegram) {

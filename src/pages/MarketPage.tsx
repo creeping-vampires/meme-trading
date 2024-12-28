@@ -1,9 +1,9 @@
-import { Flame, TrendingUp } from "lucide-react";
+import { Brain, Cpu, Flame } from "lucide-react";
 import MarketHeader from "../components/MarketComponents/MarketHeader";
 import TokenCard from "../components/MarketComponents/TokenCard";
 import { BackgroundEffect } from "../components/layout/BackgroundEffect";
-import { useEffect, useMemo, useState } from "react";
-import { getTokensListByCategory } from "../actions/serverActions";
+import { useTokensStore } from "../stores/tokensStore";
+import { Token } from "../types/token";
 
 const assets = [
   {
@@ -99,25 +99,74 @@ const assets = [
 ];
 
 export default function MarketPage() {
+  const { data: tokensData, loading, error } = useTokensStore();
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-gray-400">Loading tokens...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-red-400">{error}</div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <BackgroundEffect />
       <MarketHeader />
-      <div className="mt-4">
-        <div>
-          <div className="flex justify-start mb-2">
-            <Flame className="text-gray-50" />
-            <div className="font-bold text-gray-50">Trending</div>
-          </div>
 
+      <div className="mt-4 space-y-8">
+        {/* Trending Section */}
+        {tokensData?.Trending && tokensData.Trending.length > 0 && (
           <div>
-            {assets.map((asset, index) => (
-              <div key={index} className="mb-2">
-                <TokenCard {...asset} />
-              </div>
-            ))}
+            <div className="flex items-center gap-2 mb-2">
+              <Flame className="text-gray-50" />
+              <div className="font-bold text-gray-50">Trending</div>
+            </div>
+            <div className="space-y-2">
+              {tokensData.Trending.map((token: any, index) => (
+                <TokenCard key={index} tokenData={token} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* Murad Section */}
+        {tokensData?.Murad && tokensData.Murad.length > 0 && (
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <Cpu className="text-gray-50" />
+              <div className="font-bold text-gray-50">Murad</div>
+            </div>
+            <div className="space-y-2">
+              {tokensData.Murad.map((token, index) => (
+                <TokenCard key={index} tokenData={token} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* AI Section */}
+        {tokensData?.AI && tokensData.AI.length > 0 && (
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <Brain className="text-gray-50" />
+              <div className="font-bold text-gray-50">AI</div>
+            </div>
+            <div className="space-y-2">
+              {tokensData.AI.map((token, index) => (
+                <TokenCard key={index} tokenData={token} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
