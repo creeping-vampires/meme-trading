@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ArrowLeft,
   Star,
@@ -8,25 +8,67 @@ import {
   DollarSign,
 } from "lucide-react";
 import { useNavigationStore } from "../stores/navigationStore";
+import { getTokenPriceHistory } from "../actions/serverActions";
+
+interface CandleData {
+  o: number; // open
+  h: number; // high
+  l: number; // low
+  c: number; // close
+  v: number; // volume
+  t: number; // timestamp
+}
+
+interface ChartData {
+  bars: CandleData[];
+}
 
 export default function TokenDetailsPage() {
   const { selectedToken, setActiveTab } = useNavigationStore();
+  const [priceHistory, setPriceHistory] = useState<CandleData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPriceHistory = async () => {
+      if (selectedToken?.tokenAddress) {
+        setIsLoading(true);
+        const data = await getTokenPriceHistory(selectedToken.tokenAddress);
+        if (data && data.bars) {
+          setPriceHistory(data.bars);
+        }
+        setIsLoading(false);
+      }
+    };
+
+    fetchPriceHistory();
+  }, [selectedToken?.tokenAddress]);
 
   if (!selectedToken) {
     setActiveTab("market");
     return null;
   }
 
-  const {
-    symbol,
-    name,
-    iconUrl,
-    tokenAddress,
-    priceInUsd,
-    priceChange,
-    marketCap,
-  } = selectedToken;
+  const { symbol, name, iconUrl, priceInUsd, priceChange } = selectedToken;
   const isPositive = priceChange >= 0;
+
+  const getChartPath = () => {
+    if (!priceHistory || priceHistory.length < 2) return "";
+
+    // Use closing prices for the line chart
+    const prices = priceHistory.map((d) => d.c);
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+    const priceRange = maxPrice - minPrice;
+
+    // Normalize values to fit SVG viewport
+    const points = priceHistory.map((d, i) => {
+      const x = (i / (priceHistory.length - 1)) * 1000;
+      const y = 500 - ((d.c - minPrice) / priceRange) * 400;
+      return `${x},${y}`;
+    });
+
+    return `M ${points.join(" L ")}`;
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -85,10 +127,49 @@ export default function TokenDetailsPage() {
 
         {/* Price Chart */}
         <div className="mb-6">
-          <div className="h-[300px] bg-zinc-900 rounded-lg mb-4 p-4">
-            <div className="w-full h-full flex items-center justify-center text-gray-500">
-              Price chart coming soon
-            </div>
+          <div className="h-[300px] bg-zinc-900 rounded-lg mb-4 p-4 relative overflow-hidden">
+            {isLoading ? (
+              <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+                Loading chart...
+              </div>
+            ) : priceHistory.length > 0 ? (
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1000 500"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop
+                      offset="0%"
+                      stopColor="rgb(134, 239, 172)"
+                      stopOpacity="0.3"
+                    />
+                    <stop
+                      offset="100%"
+                      stopColor="rgb(134, 239, 172)"
+                      stopOpacity="0"
+                    />
+                  </linearGradient>
+                </defs>
+                <path
+                  d={getChartPath()}
+                  fill="none"
+                  stroke="rgb(134, 239, 172)"
+                  strokeWidth="2"
+                />
+                <path
+                  d={`${getChartPath()} L 1000,500 L 0,500 Z`}
+                  fill="url(#gradient)"
+                  opacity="0.2"
+                />
+              </svg>
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+                No price data available
+              </div>
+            )}
           </div>
 
           <div className="flex justify-between text-sm">

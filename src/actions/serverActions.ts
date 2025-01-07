@@ -18,3 +18,13 @@ export const getTokensListByCategory = async () => {
     return null;
   }
 };
+export const getTokenPriceHistory = async (tokenAddress: string) => {
+  try {
+    let url = `${apiUrl}/tokens/chart/FRhB8L7Y9Qq41qZXYLtC2nw8An1RJfLLxRF2x9RwLLMo`;
+    const response = await axios.get(url).then((res) => res.data);
+    return response;
+  } catch (err) {
+    console.error("Error fetching price history:", err);
+    return null;
+  }
+};
